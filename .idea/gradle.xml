@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="D:/Java/gradle-6.5" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/mall-cms" />
+            <option value="$PROJECT_DIR$/mall-coupon" />
+            <option value="$PROJECT_DIR$/mall-gateway" />
+            <option value="$PROJECT_DIR$/mall-member" />
+            <option value="$PROJECT_DIR$/mall-order" />
+            <option value="$PROJECT_DIR$/mall-product" />
+            <option value="$PROJECT_DIR$/mall-saller" />
+            <option value="$PROJECT_DIR$/mall-search" />
+            <option value="$PROJECT_DIR$/mall-ware" />
+          </set>
+        </option>
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/mall-gateway" />
+        <option name="gradleHome" value="D:/Java/gradle-6.5" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/mall-gateway" />
+          </set>
+        </option>
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
