@@ -1,0 +1,77 @@
+
+package com.bootx.mall.template.directive;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+
+import com.bootx.mall.common.Filter;
+import com.bootx.mall.common.Order;
+import com.bootx.mall.entity.Attribute;
+import com.bootx.mall.service.AttributeService;
+import com.bootx.mall.util.FreeMarkerUtils;
+import org.springframework.stereotype.Component;
+
+import freemarker.core.Environment;
+import freemarker.template.TemplateDirectiveBody;
+import freemarker.template.TemplateException;
+import freemarker.template.TemplateModel;
+
+/**
+ * 模板指令 - 属性
+ * 
+ * @author BOOTX Team
+ * @version 6.1
+ */
+@Component
+public class AttributeListDirective extends BaseDirective {
+
+	/**
+	 * "商品分类ID"参数名称
+	 */
+	private static final String PRODUCT_CATEGORY_ID_PARAMETER_NAME = "productCategoryId";
+
+	/**
+	 * 变量名称
+	 */
+	private static final String VARIABLE_NAME = "attributes";
+
+	@Resource
+	private AttributeService attributeService;
+
+	public static AttributeListDirective attributeListDirective;
+
+	@PostConstruct
+	public void init() {
+		attributeListDirective = this;
+		attributeListDirective.attributeService = this.attributeService;
+	}
+
+	/**
+	 * 执行
+	 * 
+	 * @param env
+	 *            环境变量
+	 * @param params
+	 *            参数
+	 * @param loopVars
+	 *            循环变量
+	 * @param body
+	 *            模板内容
+	 */
+	@Override
+	public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
+		Long productCategoryId = FreeMarkerUtils.getParameter(PRODUCT_CATEGORY_ID_PARAMETER_NAME, Long.class, params);
+		Integer count = getCount(params);
+		List<Filter> filters = getFilters(params, Attribute.class);
+		List<Order> orders = getOrders(params);
+		boolean useCache = useCache(params);
+
+		List<Attribute> attributes = attributeService.findList(productCategoryId, count, filters, orders, useCache);
+		setLocalVariable(VARIABLE_NAME, attributes, env, body);
+	}
+
+}
