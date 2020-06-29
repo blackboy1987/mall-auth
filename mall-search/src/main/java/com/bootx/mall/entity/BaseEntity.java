@@ -15,9 +15,6 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 import javax.validation.groups.Default;
 
-import com.bootx.mall.audit.AuditingEntityListener;
-import com.bootx.mall.audit.CreatedDate;
-import com.bootx.mall.audit.LastModifiedDate;
 import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
@@ -27,6 +24,9 @@ import org.hibernate.search.annotations.SortableField;
 import org.hibernate.search.annotations.Store;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.bootx.mall.audit.AuditingEntityListener;
+import com.bootx.mall.audit.CreatedDate;
+import com.bootx.mall.audit.LastModifiedDate;
 
 /**
  * Entity - 基类

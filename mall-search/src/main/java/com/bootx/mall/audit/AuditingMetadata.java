@@ -11,9 +11,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.bootx.mall.util.BeanUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.util.Assert;
+
+import com.bootx.mall.util.BeanUtils;
 
 /**
  * Audit - 审计元数据
@@ -31,22 +32,22 @@ public final class AuditingMetadata {
 	/**
 	 * "创建者"属性
 	 */
-	private final List<AuditingMetadata.Property> createdByProperties;
+	private final List<Property> createdByProperties;
 
 	/**
 	 * "创建日期"属性
 	 */
-	private final List<AuditingMetadata.Property> createdDateProperties;
+	private final List<Property> createdDateProperties;
 
 	/**
 	 * "最后修改者"属性
 	 */
-	private final List<AuditingMetadata.Property> lastModifiedByProperties;
+	private final List<Property> lastModifiedByProperties;
 
 	/**
 	 * "最后修改日期"属性
 	 */
-	private final List<AuditingMetadata.Property> lastModifiedDateProperties;
+	private final List<Property> lastModifiedDateProperties;
 
 	/**
 	 * 构造方法
@@ -68,7 +69,7 @@ public final class AuditingMetadata {
 	 * 
 	 * @return "创建者"属性
 	 */
-	public List<AuditingMetadata.Property> getCreatedByProperties() {
+	public List<Property> getCreatedByProperties() {
 		return createdByProperties;
 	}
 
@@ -77,7 +78,7 @@ public final class AuditingMetadata {
 	 * 
 	 * @return "创建日期"属性
 	 */
-	public List<AuditingMetadata.Property> getCreatedDateProperties() {
+	public List<Property> getCreatedDateProperties() {
 		return createdDateProperties;
 	}
 
@@ -86,7 +87,7 @@ public final class AuditingMetadata {
 	 * 
 	 * @return "最后修改者"属性
 	 */
-	public List<AuditingMetadata.Property> getLastModifiedByProperties() {
+	public List<Property> getLastModifiedByProperties() {
 		return lastModifiedByProperties;
 	}
 
@@ -95,7 +96,7 @@ public final class AuditingMetadata {
 	 * 
 	 * @return "最后修改日期"属性
 	 */
-	public List<AuditingMetadata.Property> getLastModifiedDateProperties() {
+	public List<Property> getLastModifiedDateProperties() {
 		return lastModifiedDateProperties;
 	}
 
@@ -135,7 +136,7 @@ public final class AuditingMetadata {
 	 *            Annotation类
 	 * @return 属性
 	 */
-	private List<AuditingMetadata.Property> findProperties(Class<?> type, Class<? extends Annotation> annotationType) {
+	private List<Property> findProperties(Class<?> type, Class<? extends Annotation> annotationType) {
 		Assert.notNull(type, "[Assertion failed] - type is required; it must not be null");
 		Assert.notNull(annotationType, "[Assertion failed] - annotationType is required; it must not be null");
 
@@ -147,14 +148,14 @@ public final class AuditingMetadata {
 		}
 		remainingPropertyDescriptorMap.putAll(propertyDescriptorMap);
 
-		List<AuditingMetadata.Property> result = new ArrayList<>();
+		List<Property> result = new ArrayList<>();
 		for (Field field : BeanUtils.findFields(type, annotationType)) {
 			String fieldName = field.getName();
-			result.add(new AuditingMetadata.Property(field, propertyDescriptorMap.get(fieldName)));
+			result.add(new Property(field, propertyDescriptorMap.get(fieldName)));
 			remainingPropertyDescriptorMap.remove(fieldName);
 		}
 		for (PropertyDescriptor propertyDescriptor : remainingPropertyDescriptorMap.values()) {
-			result.add(new AuditingMetadata.Property(null, propertyDescriptor));
+			result.add(new Property(null, propertyDescriptor));
 		}
 		return result;
 	}

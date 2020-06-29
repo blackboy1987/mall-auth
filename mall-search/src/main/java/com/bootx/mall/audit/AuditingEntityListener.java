@@ -9,12 +9,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
-import com.bootx.mall.util.SpringUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.core.ResolvableType;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
+
+import com.bootx.mall.util.SpringUtils;
 
 /**
  * Audit - 审计实体类监听器
