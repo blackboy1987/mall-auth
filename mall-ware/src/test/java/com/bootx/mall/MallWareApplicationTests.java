@@ -1,10 +1,10 @@
-package com.bootx.mall.cms;
+package com.bootx.mall;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MallCouponApplicationTests {
+class MallWareApplicationTests {
 
     @Test
     void contextLoads() {
