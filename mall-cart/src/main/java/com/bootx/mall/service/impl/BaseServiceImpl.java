@@ -1,10 +1,10 @@
 
 package com.bootx.mall.service.impl;
 
-import com.bootx.mall.Filter;
-import com.bootx.mall.Order;
-import com.bootx.mall.Page;
-import com.bootx.mall.Pageable;
+import com.bootx.mall.common.Filter;
+import com.bootx.mall.common.Order;
+import com.bootx.mall.common.Page;
+import com.bootx.mall.common.Pageable;
 import com.bootx.mall.dao.BaseDao;
 import com.bootx.mall.entity.BaseEntity;
 import com.bootx.mall.service.BaseService;
