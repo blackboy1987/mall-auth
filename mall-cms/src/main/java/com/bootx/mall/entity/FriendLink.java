@@ -1,13 +1,13 @@
 
 package com.bootx.mall.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
 /**
  * Entity - 友情链接
@@ -91,7 +91,7 @@ public class FriendLink extends OrderedEntity<Long> {
 	 * 
 	 * @return 类型
 	 */
-	public FriendLink.Type getType() {
+	public Type getType() {
 		return type;
 	}
 
@@ -101,7 +101,7 @@ public class FriendLink extends OrderedEntity<Long> {
 	 * @param type
 	 *            类型
 	 */
-	public void setType(FriendLink.Type type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

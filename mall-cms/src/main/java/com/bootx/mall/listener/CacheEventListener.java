@@ -1,18 +1,15 @@
 
 package com.bootx.mall.listener;
 
-import javax.inject.Inject;
-
 import com.bootx.mall.entity.Article;
-import com.bootx.mall.entity.Product;
 import com.bootx.mall.service.ArticleService;
-import com.bootx.mall.service.ProductService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
-
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
 import net.sf.ehcache.event.CacheEventListenerAdapter;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
 
 /**
  * Listener - 缓存
@@ -25,8 +22,6 @@ public class CacheEventListener extends CacheEventListenerAdapter {
 
 	@Inject
 	private ArticleService articleService;
-	@Inject
-	private ProductService productService;
 
 	/**
 	 * 元素过期调用
@@ -46,16 +41,6 @@ public class CacheEventListener extends CacheEventListenerAdapter {
 			if (article != null && hits != null && hits > 0 && hits > article.getHits()) {
 				article.setHits(hits);
 				articleService.update(article);
-			}
-		} else if (StringUtils.equals(cacheName, Product.HITS_CACHE_NAME)) {
-			Long id = (Long) element.getObjectKey();
-			Long hits = (Long) element.getObjectValue();
-			Product product = productService.find(id);
-			if (product != null && hits != null && hits > 0) {
-				long amount = hits - product.getHits();
-				if (amount > 0) {
-					productService.addHits(product, amount);
-				}
 			}
 		}
 	}

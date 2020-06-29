@@ -1,20 +1,13 @@
 
 package com.bootx.mall.entity;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Entity - 广告
@@ -120,7 +113,7 @@ public class Ad extends OrderedEntity<Long> {
 	 * 
 	 * @return 类型
 	 */
-	public Ad.Type getType() {
+	public Type getType() {
 		return type;
 	}
 
@@ -130,7 +123,7 @@ public class Ad extends OrderedEntity<Long> {
 	 * @param type
 	 *            类型
 	 */
-	public void setType(Ad.Type type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

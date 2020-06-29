@@ -90,7 +90,7 @@ public class Seo extends BaseEntity<Long> {
 	 * 类型
 	 */
 	@Column(nullable = false, updatable = false, unique = true)
-	private Seo.Type type;
+	private Type type;
 
 	/**
 	 * 页面标题
@@ -115,7 +115,7 @@ public class Seo extends BaseEntity<Long> {
 	 * 
 	 * @return 类型
 	 */
-	public Seo.Type getType() {
+	public Type getType() {
 		return type;
 	}
 
@@ -125,7 +125,7 @@ public class Seo extends BaseEntity<Long> {
 	 * @param type
 	 *            类型
 	 */
-	public void setType(Seo.Type type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

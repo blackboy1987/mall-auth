@@ -1,20 +1,13 @@
 
 package com.bootx.mall.listener;
 
-import java.util.logging.Logger;
-
-import javax.inject.Inject;
-
-import com.bootx.mall.entity.Article;
-import com.bootx.mall.entity.Product;
-import com.bootx.mall.entity.Store;
-import com.bootx.mall.service.ConfigService;
-import com.bootx.mall.service.SearchService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
+import java.util.logging.Logger;
 
 /**
  * Listener - 初始化
@@ -33,11 +26,6 @@ public class InitListener {
 	@Value("${system.version}")
 	private String systemVersion;
 
-	@Inject
-	private ConfigService configService;
-	@Inject
-	private SearchService searchService;
-
 	/**
 	 * 事件处理
 	 * 
@@ -52,10 +40,6 @@ public class InitListener {
 
 		String info = "I|n|i|t|i|a|l|i|z|i|n|g| |S|H|O|P|+|+| |B|2|B|2|C| |" + systemVersion;
 		LOGGER.info(info.replace("|", StringUtils.EMPTY));
-		configService.init();
-		searchService.index(Article.class);
-		searchService.index(Product.class);
-		searchService.index(Store.class);
 	}
 
 }
