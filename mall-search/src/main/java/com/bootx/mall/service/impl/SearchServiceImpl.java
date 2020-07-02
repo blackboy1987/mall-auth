@@ -84,34 +84,22 @@ public class SearchServiceImpl implements SearchService {
 			boolQueryBuilder.filter(QueryBuilders.termQuery("storeId",store.getName()));
 		}
 
-		RangeQueryBuilder rangeQueryBuilder = null;
-		if(startPrice!=null){
-			if(rangeQueryBuilder==null){
-				rangeQueryBuilder = QueryBuilders.rangeQuery("price");
+		if(startPrice!=null||endPrice!=null){
+			RangeQueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("price");
+			if(startPrice!=null){
+				rangeQueryBuilder.gte(startPrice);
 			}
-			rangeQueryBuilder.gte(startPrice);
-		}
-
-		if(endPrice!=null){
-			if(rangeQueryBuilder==null){
-				rangeQueryBuilder = QueryBuilders.rangeQuery("price");
+			if(endPrice!=null){
+				rangeQueryBuilder.lte(endPrice);
 			}
-			rangeQueryBuilder.lte(endPrice);
-		}
-
-		if(rangeQueryBuilder!=null){
 			boolQueryBuilder.filter(rangeQueryBuilder);
 		}
+
 
 		if(isOutOfStock!=null){
 			boolQueryBuilder.filter(QueryBuilders.termQuery("hasStock",!isOutOfStock));
 		}
 		searchSourceBuilder.query(boolQueryBuilder);
-
-
-
-
-
 
 		searchSourceBuilder.from((pageable.getPageNumber()-1)*pageable.getPageSize());
 		searchSourceBuilder.size(pageable.getPageSize());
