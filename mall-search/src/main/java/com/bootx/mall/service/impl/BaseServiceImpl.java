@@ -1,6 +1,15 @@
 
 package com.bootx.mall.service.impl;
 
+import java.beans.PropertyDescriptor;
+import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import com.bootx.mall.common.Filter;
 import com.bootx.mall.common.Order;
 import com.bootx.mall.common.Page;
@@ -12,14 +21,6 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-
-import javax.annotation.Resource;
-import java.beans.PropertyDescriptor;
-import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Service - 基类
@@ -40,7 +41,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity<ID>, ID extends Seria
 	 */
 	private BaseDao<T, ID> baseDao;
 
-	@Resource
+	@Inject
 	protected void setBaseDao(BaseDao<T, ID> baseDao) {
 		this.baseDao = baseDao;
 	}

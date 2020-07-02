@@ -15,18 +15,11 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 import javax.validation.groups.Default;
 
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.DateBridge;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Resolution;
-import org.hibernate.search.annotations.SortableField;
-import org.hibernate.search.annotations.Store;
-
-import com.fasterxml.jackson.annotation.JsonView;
 import com.bootx.mall.audit.AuditingEntityListener;
 import com.bootx.mall.audit.CreatedDate;
 import com.bootx.mall.audit.LastModifiedDate;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 /**
  * Entity - 基类
@@ -95,9 +88,6 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
 	 */
 	@JsonView(BaseView.class)
 	@CreatedDate
-	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
-	@DateBridge(resolution = Resolution.SECOND)
-	@SortableField
 	@Column(nullable = false, updatable = false)
 	private Date createdDate;
 
@@ -106,8 +96,6 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
 	 */
 	@JsonView(BaseView.class)
 	@LastModifiedDate
-	@Field(store = Store.YES, index = Index.YES, analyze = Analyze.NO)
-	@DateBridge(resolution = Resolution.SECOND)
 	@Column(nullable = false)
 	private Date lastModifiedDate;
 

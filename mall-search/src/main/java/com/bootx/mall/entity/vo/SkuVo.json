@@ -1,0 +1,72 @@
+{
+  "mappings": {
+    "properties": {
+      "sn":{
+        "type": "text"
+
+      },
+      "productId":{
+        "type": "keyword"
+      },
+      "name":{
+        "type": "text"
+      , "analyzer": "ik_smart"
+      },
+      "price":{
+        "type": "keyword"
+      },
+      "img":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+
+      },
+      "sales":{
+        "type": "long"
+      },
+      "hasStock":{
+        "type": "boolean"
+      },
+      "totalScore":{
+        "type": "long"
+      },
+      "brandId":{
+        "type": "long"
+      },
+      "categoryId":{
+        "type": "long"
+      },
+      "brandName":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "brandImg":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "categoryName":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "attrs":{
+        "type": "nested",
+        "properties": {
+          "attrId":{
+            "type":"long"
+          },
+          "attrName":{
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          },
+          "attrValue":{
+            "type":"keyword"
+          }
+        }
+      }
+    }
+  }
+}

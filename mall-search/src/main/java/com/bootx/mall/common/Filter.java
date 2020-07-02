@@ -85,7 +85,7 @@ public class Filter implements Serializable {
 	/**
 	 * 运算符
 	 */
-	private Operator operator;
+	private Filter.Operator operator;
 
 	/**
 	 * 值
@@ -113,7 +113,7 @@ public class Filter implements Serializable {
 	 * @param value
 	 *            值
 	 */
-	public Filter(String property, Operator operator, Object value) {
+	public Filter(String property, Filter.Operator operator, Object value) {
 		this.property = property;
 		this.operator = operator;
 		this.value = value;
@@ -131,7 +131,7 @@ public class Filter implements Serializable {
 	 * @param ignoreCase
 	 *            忽略大小写
 	 */
-	public Filter(String property, Operator operator, Object value, boolean ignoreCase) {
+	public Filter(String property, Filter.Operator operator, Object value, boolean ignoreCase) {
 		this.property = property;
 		this.operator = operator;
 		this.value = value;
@@ -148,7 +148,7 @@ public class Filter implements Serializable {
 	 * @return 等于筛选
 	 */
 	public static Filter eq(String property, Object value) {
-		return new Filter(property, Operator.EQ, value);
+		return new Filter(property, Filter.Operator.EQ, value);
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class Filter implements Serializable {
 	 * @return 等于筛选
 	 */
 	public static Filter eq(String property, Object value, boolean ignoreCase) {
-		return new Filter(property, Operator.EQ, value, ignoreCase);
+		return new Filter(property, Filter.Operator.EQ, value, ignoreCase);
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class Filter implements Serializable {
 	 * @return 不等于筛选
 	 */
 	public static Filter ne(String property, Object value) {
-		return new Filter(property, Operator.NE, value);
+		return new Filter(property, Filter.Operator.NE, value);
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class Filter implements Serializable {
 	 * @return 不等于筛选
 	 */
 	public static Filter ne(String property, Object value, boolean ignoreCase) {
-		return new Filter(property, Operator.NE, value, ignoreCase);
+		return new Filter(property, Filter.Operator.NE, value, ignoreCase);
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class Filter implements Serializable {
 	 * @return 大于筛选
 	 */
 	public static Filter gt(String property, Object value) {
-		return new Filter(property, Operator.GT, value);
+		return new Filter(property, Filter.Operator.GT, value);
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class Filter implements Serializable {
 	 * @return 小于筛选
 	 */
 	public static Filter lt(String property, Object value) {
-		return new Filter(property, Operator.LT, value);
+		return new Filter(property, Filter.Operator.LT, value);
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class Filter implements Serializable {
 	 * @return 大于等于筛选
 	 */
 	public static Filter ge(String property, Object value) {
-		return new Filter(property, Operator.GE, value);
+		return new Filter(property, Filter.Operator.GE, value);
 	}
 
 	/**
@@ -243,7 +243,7 @@ public class Filter implements Serializable {
 	 * @return 小于等于筛选
 	 */
 	public static Filter le(String property, Object value) {
-		return new Filter(property, Operator.LE, value);
+		return new Filter(property, Filter.Operator.LE, value);
 	}
 
 	/**
@@ -256,7 +256,7 @@ public class Filter implements Serializable {
 	 * @return 相似筛选
 	 */
 	public static Filter like(String property, Object value) {
-		return new Filter(property, Operator.LIKE, value);
+		return new Filter(property, Filter.Operator.LIKE, value);
 	}
 
 	/**
@@ -269,7 +269,7 @@ public class Filter implements Serializable {
 	 * @return 包含筛选
 	 */
 	public static Filter in(String property, Object value) {
-		return new Filter(property, Operator.IN, value);
+		return new Filter(property, Filter.Operator.IN, value);
 	}
 
 	/**
@@ -280,7 +280,7 @@ public class Filter implements Serializable {
 	 * @return 为Null筛选
 	 */
 	public static Filter isNull(String property) {
-		return new Filter(property, Operator.IS_NULL, null);
+		return new Filter(property, Filter.Operator.IS_NULL, null);
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class Filter implements Serializable {
 	 * @return 不为Null筛选
 	 */
 	public static Filter isNotNull(String property) {
-		return new Filter(property, Operator.IS_NOT_NULL, null);
+		return new Filter(property, Filter.Operator.IS_NOT_NULL, null);
 	}
 
 	/**
@@ -328,7 +328,7 @@ public class Filter implements Serializable {
 	 * 
 	 * @return 运算符
 	 */
-	public Operator getOperator() {
+	public Filter.Operator getOperator() {
 		return operator;
 	}
 
@@ -338,7 +338,7 @@ public class Filter implements Serializable {
 	 * @param operator
 	 *            运算符
 	 */
-	public void setOperator(Operator operator) {
+	public void setOperator(Filter.Operator operator) {
 		this.operator = operator;
 	}
 

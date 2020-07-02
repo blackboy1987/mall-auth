@@ -21,13 +21,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.core.ResolvableType;
-import org.springframework.util.Assert;
-
 import com.bootx.mall.common.Filter;
 import com.bootx.mall.common.Order;
 import com.bootx.mall.common.Page;
@@ -35,6 +28,12 @@ import com.bootx.mall.common.Pageable;
 import com.bootx.mall.dao.BaseDao;
 import com.bootx.mall.entity.BaseEntity;
 import com.bootx.mall.entity.OrderedEntity;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.ResolvableType;
+import org.springframework.util.Assert;
 
 /**
  * Dao - 基类

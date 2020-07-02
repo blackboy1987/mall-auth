@@ -199,7 +199,6 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 		return productDao.findPage(type, storeType, store, productCategory, storeProductCategory, brand, promotion, productTag, storeProductTag, attributeValueMap, startPrice, endPrice, isMarketable, isList, isTop, isActive, isOutOfStock, isStockAlert, hasPromotion, orderType, pageable);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
 	public Page<Product> search(String keyword, Product.Type type, Store.Type storeType, Store store, Boolean isOutOfStock, Boolean isStockAlert, BigDecimal startPrice, BigDecimal endPrice, Product.OrderType orderType, Pageable pageable) {

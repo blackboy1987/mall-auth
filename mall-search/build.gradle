@@ -24,17 +24,84 @@ dependencies {
 
     compile fileTree(dir:'lib',includes:['*jar'])
 
-    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
-    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
-    compile group: 'org.hibernate', name: 'hibernate-search-orm', version: '5.11.5.Final'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.3.1.RELEASE'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.14'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+    compile group: 'commons-io', name: 'commons-io', version: '2.7'
+    compile group: 'org.apache.oltu.oauth2', name: 'org.apache.oltu.oauth2.client', version: '1.0.2'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.12'
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
+    compile group: 'org.apache.shiro', name: 'shiro-core', version: '1.5.3'
+    compile group: 'org.apache.shiro', name: 'shiro-web', version: '1.5.3'
+    compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.5.3'
+    compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.5.3',{
+        exclude group: 'net.sf.ehcache'
+    }
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.4'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+    compile group: 'org.jxls', name: 'jxls', version: '2.8.1',{
+        exclude group: 'commons-logging'
+    }
+
+
+
+
+    compile group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2.2.1.RELEASE'
+    compile group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2.2.1.RELEASE'
+
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.2.3.RELEASE'
+
+
+
+
+
+
+
+
+
+    compile group: 'com.github.penggle', name: 'kaptcha', version: '2.3.2'
+    compile group: 'com.alipay.sdk', name: 'alipay-sdk-java', version: '3.1.0'
+    compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.5'
+    compile group: 'org.aspectj', name: 'aspectjrt', version: '1.9.5'
+
+    compile group: 'org.perf4j', name: 'perf4j', version: '0.9.16'
+    compile group: 'com.aliyun.oss', name: 'aliyun-sdk-oss', version: '2.0.5',{
+        exclude group: 'commons-logging'
+    }
+
+    compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.51'
+    compile group: 'org.im4java', name: 'im4java', version: '1.4.0'
+    compile group: 'org.jxls', name: 'jxls-poi', version: '2.8.1'
+    compile group: 'org.apache.poi', name: 'poi', version: '4.1.2'
+    compile group: 'org.jxls', name: 'jxls', version: '2.8.1' ,{
+        exclude group: 'commons-logging'
+    }
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.11.0'
+    compile group: 'jaxen', name: 'jaxen', version: '1.2.0'
+
+    compile group: 'org.apache.commons', name: 'commons-compress', version: '1.12'
+    compile group: 'org.apache.commons', name: 'commons-email', version: '1.4'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.14'
+    compile group: 'commons-net', name: 'commons-net', version: '3.6'
+
+    compile group: 'net.sf.ehcache', name: 'ehcache', version: ''
+    compile group: 'net.sf.ehcache', name: 'ehcache-web', version: '2.0.4',{
+        exclude group: 'net.sf.ehcache',module: 'ehcache-core'
+    }
     compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.1.5.Final'
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
 
+    compile group: 'org.springframework.mobile', name: 'spring-mobile-device', version: '1.1.5.RELEASE'
 
+    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '7.8.0'
+    compile group: 'org.elasticsearch', name: 'elasticsearch', version: '7.8.0'
 
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
@@ -42,11 +109,6 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 
-    compile group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2.2.1.RELEASE'
-    compile group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: '2.2.1.RELEASE'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.2.3.RELEASE'
-    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '7.8.0'
-    compile group: 'org.elasticsearch', name: 'elasticsearch', version: '7.8.0'
 
 
 }
