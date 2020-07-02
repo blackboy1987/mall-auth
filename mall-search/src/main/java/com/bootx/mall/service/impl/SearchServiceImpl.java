@@ -13,7 +13,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -70,7 +72,46 @@ public class SearchServiceImpl implements SearchService {
 		SearchRequest searchRequest = new SearchRequest("product");
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 		//searchSourceBuilder.query(QueryBuilders.matchAllQuery());
-		searchSourceBuilder.query(QueryBuilders.matchQuery("name",keyword));
+		BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+		boolQueryBuilder.must(QueryBuilders.matchQuery("name",keyword));
+		if(type!=null){
+			boolQueryBuilder.filter(QueryBuilders.termQuery("type",type));
+		}
+		if(storeType!=null){
+			boolQueryBuilder.filter(QueryBuilders.termQuery("storeType",storeType));
+		}
+		if(store!=null&&store.getId()!=null){
+			boolQueryBuilder.filter(QueryBuilders.termQuery("storeId",store.getName()));
+		}
+
+		RangeQueryBuilder rangeQueryBuilder = null;
+		if(startPrice!=null){
+			if(rangeQueryBuilder==null){
+				rangeQueryBuilder = QueryBuilders.rangeQuery("price");
+			}
+			rangeQueryBuilder.gte(startPrice);
+		}
+
+		if(endPrice!=null){
+			if(rangeQueryBuilder==null){
+				rangeQueryBuilder = QueryBuilders.rangeQuery("price");
+			}
+			rangeQueryBuilder.lte(endPrice);
+		}
+
+		if(rangeQueryBuilder!=null){
+			boolQueryBuilder.filter(rangeQueryBuilder);
+		}
+
+		if(isOutOfStock!=null){
+			boolQueryBuilder.filter(QueryBuilders.termQuery("hasStock",!isOutOfStock));
+		}
+		searchSourceBuilder.query(boolQueryBuilder);
+
+
+
+
+
 
 		searchSourceBuilder.from((pageable.getPageNumber()-1)*pageable.getPageSize());
 		searchSourceBuilder.size(pageable.getPageSize());
