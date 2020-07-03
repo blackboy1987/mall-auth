@@ -21,7 +21,7 @@ ext {
 
 dependencies {
 
-
+    compile project(":mall-common")
     compile fileTree(dir:'lib',includes:['*jar'])
 
     compile group: 'org.ansj', name: 'ansj_seg', version: '5.1.6'

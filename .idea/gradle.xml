@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/mall-cart" />
             <option value="$PROJECT_DIR$/mall-cms" />
+            <option value="$PROJECT_DIR$/mall-common" />
             <option value="$PROJECT_DIR$/mall-coupon" />
             <option value="$PROJECT_DIR$/mall-gateway" />
             <option value="$PROJECT_DIR$/mall-member" />
@@ -21,6 +22,18 @@
             <option value="$PROJECT_DIR$/mall-saller" />
             <option value="$PROJECT_DIR$/mall-search" />
             <option value="$PROJECT_DIR$/mall-ware" />
+          </set>
+        </option>
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/mall-common" />
+        <option name="gradleHome" value="D:/Java/gradle-6.5" />
+        <option name="gradleJvm" value="11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/mall-common" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

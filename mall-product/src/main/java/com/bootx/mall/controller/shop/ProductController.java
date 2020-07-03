@@ -11,9 +11,13 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import com.bootx.mall.common.Page;
 import com.bootx.mall.common.Pageable;
 import com.bootx.mall.common.Results;
+import com.bootx.mall.entity.vo.SkuVo;
 import com.bootx.mall.exception.ResourceNotFoundException;
+import com.bootx.mall.feign.SearchService;
+import com.bootx.mall.service.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.ArrayUtils;
@@ -38,14 +42,6 @@ import com.bootx.mall.entity.ProductTag;
 import com.bootx.mall.entity.Promotion;
 import com.bootx.mall.entity.Store;
 import com.bootx.mall.entity.StoreProductCategory;
-import com.bootx.mall.service.AttributeService;
-import com.bootx.mall.service.BrandService;
-import com.bootx.mall.service.ProductCategoryService;
-import com.bootx.mall.service.ProductService;
-import com.bootx.mall.service.ProductTagService;
-import com.bootx.mall.service.PromotionService;
-import com.bootx.mall.service.StoreProductCategoryService;
-import com.bootx.mall.service.StoreService;
 
 /**
  * Controller - 商品
@@ -83,6 +79,8 @@ public class ProductController extends BaseController {
 	private ProductTagService productTagService;
 	@Inject
 	private AttributeService attributeService;
+	@Inject
+	private SearchService searchService;
 
 	/**
 	 * 详情
@@ -315,7 +313,8 @@ public class ProductController extends BaseController {
 		model.addAttribute("endPrice", endPrice);
 		model.addAttribute("orderType", orderType);
 		model.addAttribute("searchType", "PRODUCT");
-		model.addAttribute("page", productService.search(keyword, null, storeType, store, isOutOfStock, null, startPrice, endPrice, orderType, pageable));
+		Page<SkuVo> page = searchService.search(keyword, null, storeType, storeId, isOutOfStock, null, startPrice, endPrice, orderType, pageable);
+		model.addAttribute("page", page);
 		return "shop/product/search";
 	}
 

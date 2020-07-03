@@ -53,7 +53,7 @@ public class SearchController extends BaseController {
 	private SearchService searchService;
 
 	@GetMapping("/product")
-	private Page<SkuVo> search(String keyword, Product.Type type, Store.Type storeType, Store store, Boolean isOutOfStock, Boolean isStockAlert, BigDecimal startPrice, BigDecimal endPrice, Product.OrderType orderType, Pageable pageable){
-		return searchService.search(keyword, type, storeType, store, isOutOfStock, isStockAlert, startPrice, endPrice, orderType, pageable);
+	private Page<SkuVo> search(String keyword, Product.Type type, Store.Type storeType, Long storeId, Boolean isOutOfStock, Boolean isStockAlert, BigDecimal startPrice, BigDecimal endPrice, Product.OrderType orderType, Pageable pageable){
+		return searchService.search(keyword, type, storeType, storeId, isOutOfStock, isStockAlert, startPrice, endPrice, orderType, pageable);
 	}
 }

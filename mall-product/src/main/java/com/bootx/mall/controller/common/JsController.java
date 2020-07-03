@@ -3,6 +3,7 @@ package com.bootx.mall.controller.common;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.bootx.mall.util.SystemUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,6 +38,7 @@ public class JsController {
 		model.addAttribute("memberLoginUrl", memberLoginUrl);
 		model.addAttribute("businessLoginUrl", businessLoginUrl);
 		model.addAttribute("adminLoginUrl", adminLoginUrl);
+		model.addAttribute("setting", SystemUtils.getSetting());
 		return "common/js/base";
 	}
 

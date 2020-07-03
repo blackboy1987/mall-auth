@@ -61,7 +61,7 @@ public interface SearchService {
 	 *            分页信息
 	 * @return 商品分页
 	 */
-	Page<SkuVo> search(String keyword, Product.Type type, Store.Type storeType, Store store, Boolean isOutOfStock, Boolean isStockAlert, BigDecimal startPrice, BigDecimal endPrice, Product.OrderType orderType, Pageable pageable);
+	Page<SkuVo> search(String keyword, Product.Type type, Store.Type storeType, Long storeId, Boolean isOutOfStock, Boolean isStockAlert, BigDecimal startPrice, BigDecimal endPrice, Product.OrderType orderType, Pageable pageable);
 
 
 }

@@ -60,7 +60,7 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
-	public Page<SkuVo> search(String keyword, Product.Type type, Store.Type storeType, Store store, Boolean isOutOfStock, Boolean isStockAlert, BigDecimal startPrice, BigDecimal endPrice, Product.OrderType orderType, Pageable pageable) {
+	public Page<SkuVo> search(String keyword, Product.Type type, Store.Type storeType, Long storeId, Boolean isOutOfStock, Boolean isStockAlert, BigDecimal startPrice, BigDecimal endPrice, Product.OrderType orderType, Pageable pageable) {
 		if (StringUtils.isEmpty(keyword)) {
 			return Page.emptyPage(pageable);
 		}
@@ -80,8 +80,8 @@ public class SearchServiceImpl implements SearchService {
 		if(storeType!=null){
 			boolQueryBuilder.filter(QueryBuilders.termQuery("storeType",storeType));
 		}
-		if(store!=null&&store.getId()!=null){
-			boolQueryBuilder.filter(QueryBuilders.termQuery("storeId",store.getName()));
+		if(storeId!=null){
+			boolQueryBuilder.filter(QueryBuilders.termQuery("storeId",storeId));
 		}
 
 		if(startPrice!=null||endPrice!=null){
@@ -94,7 +94,6 @@ public class SearchServiceImpl implements SearchService {
 			}
 			boolQueryBuilder.filter(rangeQueryBuilder);
 		}
-
 
 		if(isOutOfStock!=null){
 			boolQueryBuilder.filter(QueryBuilders.termQuery("hasStock",!isOutOfStock));
@@ -110,7 +109,6 @@ public class SearchServiceImpl implements SearchService {
 			SearchHit[] searchHits = hits.getHits();
 			List<SkuVo> skuVos = new ArrayList<>();
 			for (SearchHit hit : searchHits) {
-				System.out.println(hit.getId());
 				skuVos.add(JsonUtils.toObject(hit.getSourceAsString(),SkuVo.class));
 			}
 			return new Page<>(skuVos,hits.getTotalHits().value,pageable);
