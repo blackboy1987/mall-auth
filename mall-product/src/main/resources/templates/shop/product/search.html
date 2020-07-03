@@ -67,7 +67,7 @@
 		[#escape x as x?js_string]
 			<script>
 			$().ready(function() {
-				
+
 				var $compareForm = $("#compareForm");
 				var $compareBar = $("#compareBar");
 				var $compareBody = $("#compareBar .compare-bar-body ul");
@@ -83,11 +83,11 @@
 				var $addCompare = $("a.add-compare");
 				var compareProductItemTemplate = _.template($("#compareProductItemTemplate").html());
 				var compareProductIdsLocalStorageKey = "compareProductIds";
-				
+
 				// 对比栏
 				var compareProductIdsLocalStorage = localStorage.getItem(compareProductIdsLocalStorageKey);
 				var compareProductIds = compareProductIdsLocalStorage != null ? JSON.parse(compareProductIdsLocalStorage) : [];
-				
+
 				if (compareProductIds.length > 0) {
 					$.ajax({
 						url: "${base}/product/compare_bar",
@@ -107,12 +107,12 @@
 						}
 					});
 				}
-				
+
 				// 添加对比项
 				$addCompare.click(function() {
 					var $element = $(this);
 					var productId = $element.data("product-id");
-					
+
 					if ($.inArray(productId, compareProductIds) >= 0) {
 						$.bootstrapGrowl("${message("shop.product.alreadyAddCompare")}", {
 							type: "warning"
@@ -146,12 +146,12 @@
 					});
 					return false;
 				});
-				
+
 				// 删除对比项
 				$compareBar.on("click", "a.delete-compare", function() {
 					var $element = $(this);
 					var productId = $element.data("product-id");
-					
+
 					$element.closest("li").velocity("fadeOut").remove();
 					compareProductIds = $.grep(compareProductIds, function(n, i) {
 						return compareProductIds[i] != productId;
@@ -164,7 +164,7 @@
 					}
 					return false;
 				});
-				
+
 				// 开始对比
 				$compare.click(function() {
 					if (compareProductIds.length < 2) {
@@ -176,41 +176,41 @@
 					$compareForm.submit();
 					return false;
 				});
-				
+
 				// 清空对比栏
 				$clearCompareBar.click(function() {
 					localStorage.removeItem(compareProductIdsLocalStorageKey);
 					$compareBar.find("li:not(.action)").remove().end().velocity("fadeOut");
 					return false;
 				});
-				
+
 				// 价格
 				$startPrice.add($endPrice).keypress(function(event) {
 					return (event.which >= 48 && event.which <= 57) || (event.which == 46 && $(this).val().indexOf(".") < 0) || event.which == 8 || event.which == 13;
 				});
-				
+
 				// 排序类型
 				$orderTypeItem.click(function() {
 					var $element = $(this);
 					var orderType = $element.data("order-type");
-					
+
 					$orderType.val(orderType);
 					$productForm.submit();
 					return false;
 				});
-				
+
 				// 是否自营筛选
 				$storeType.change(function() {
 					$productForm.submit();
 					return false;
 				});
-				
+
 				// 是否有货筛选
 				$isOutOfStock.change(function() {
 					$productForm.submit();
 					return false;
 				});
-			
+
 			});
 			</script>
 		[/#escape]
@@ -348,7 +348,7 @@
 												[#if product.type == "GENERAL"]
 													<a href="javascript:;" data-action="addCart" data-sku-id="${defaultSku.id}" data-cart-target="#mainSidebarCart" data-product-image-target="#productImage${product.id}">
 														<i class="iconfont icon-cart"></i>
-														${message("shop.product.addCart")}
+														${message("加入购物车")}
 													</a>
 												[#elseif product.type == "EXCHANGE"]
 													<a href="javascript:;" data-action="checkout" data-sku-id="${defaultSku.id}">

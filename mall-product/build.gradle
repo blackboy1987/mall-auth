@@ -20,8 +20,6 @@ ext {
 }
 
 dependencies {
-
-    compile project(":mall-common")
     compile fileTree(dir:'lib',includes:['*jar'])
 
     compile group: 'org.ansj', name: 'ansj_seg', version: '5.1.6'
@@ -98,6 +96,9 @@ dependencies {
 
     compile group: 'org.springframework.mobile', name: 'spring-mobile-device', version: '1.1.5.RELEASE'
 
+
+    compile group: 'org.redisson', name: 'redisson', version: '3.13.2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.3.1.RELEASE'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-validation'

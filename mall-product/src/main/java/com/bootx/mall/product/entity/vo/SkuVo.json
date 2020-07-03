@@ -1,0 +1,129 @@
+{
+  "mappings": {
+    "properties": {
+      "sn":{
+        "type": "text"
+      },
+      "id":{
+        "type": "keyword"
+      },
+      "name":{
+        "type": "text",
+        "analyzer": "ik_smart"
+      },
+      "price":{
+        "type": "keyword"
+      },
+      "path":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "img":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "sales":{
+        "type": "long"
+      },
+      "hasStock":{
+        "type": "boolean"
+      },
+      "totalScore":{
+        "type": "long"
+      },
+      "brandId":{
+        "type": "long"
+      },
+      "categoryId":{
+        "type": "long"
+      },
+      "brandName":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "brandImg":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "caption":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "type":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "categoryName":{
+        "type": "keyword",
+        "index": false,
+        "doc_values": false
+      },
+      "attrs":{
+        "type": "nested",
+        "properties": {
+          "attrId":{
+            "type":"long"
+          },
+          "attrName":{
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          },
+          "attrValue":{
+            "type":"keyword"
+          }
+        }
+      },
+      "defaultSku": {
+        "type": "nested",
+        "properties": {
+          "id":{
+            "type":"long"
+          },
+          "price":{
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          },
+          "exchangePoint": {
+            "type": "long"
+          },
+          "marketPrice":{
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          }
+        }
+      },
+      "store": {
+        "type": "nested",
+        "properties": {
+          "id":{
+            "type":"long"
+          },
+          "name":{
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          },
+          "path":{
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          },
+          "storeType":{
+            "type": "keyword",
+            "index": false,
+            "doc_values": false
+          }
+        }
+      }
+    }
+  }
+}
