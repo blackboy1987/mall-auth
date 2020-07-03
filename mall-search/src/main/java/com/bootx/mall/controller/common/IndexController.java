@@ -3,7 +3,9 @@ package com.bootx.mall.controller.common;
 import com.bootx.mall.config.ElasticSearchConfig;
 import com.bootx.mall.entity.*;
 import com.bootx.mall.entity.vo.Attr;
+import com.bootx.mall.entity.vo.DefaultSkuVo;
 import com.bootx.mall.entity.vo.SkuVo;
+import com.bootx.mall.entity.vo.StoreVo;
 import com.bootx.mall.service.SkuService;
 import com.bootx.mall.service.SpecificationService;
 import com.bootx.mall.util.JsonUtils;
@@ -28,6 +30,7 @@ import java.util.Set;
  * @date 2020-07-02 13:33:43
  */
 @RestController
+@RequestMapping("/es")
 public class IndexController {
 
     @Inject
@@ -39,6 +42,7 @@ public class IndexController {
     @Inject
     private RestHighLevelClient restHighLevelClient;
 
+    @GetMapping("/product/index")
     public Integer index() throws Exception{
         List<Sku> skus = skuService.findAll();
         // 循环组装数据。放到es里面
@@ -58,16 +62,37 @@ public class IndexController {
         Product product = sku.getProduct();
         Brand brand = product.getBrand();
         ProductCategory productCategory = product.getProductCategory();
+
+
         Store store = product.getStore();
+        StoreVo storeVo = new StoreVo();
+        storeVo.setId(store.getId());
+        storeVo.setType(store.getType());
+        storeVo.setName(store.getName());
+        storeVo.setPath(store.getPath());
+        skuVo.setStore(storeVo);
+
+
         skuVo.setSn(sku.getSn());
-        skuVo.setProductId(product.getId());
-        skuVo.setImg(product.getThumbnail());
+        skuVo.setId(product.getId());
+        skuVo.setThumbnail(product.getThumbnail());
         skuVo.setName(product.getName());
         skuVo.setPrice(sku.getPrice());
         skuVo.setHasStock(!sku.getIsOutOfStock());
         skuVo.setSales(product.getSales());
         skuVo.setTotalScore(product.getTotalScore());
         skuVo.setAttrs(setAttrs(sku));
+        skuVo.setType(product.getType());
+        skuVo.setCaption(product.getCaption());
+        skuVo.setPath(product.getPath());
+
+        DefaultSkuVo defaultSku = new DefaultSkuVo();
+        defaultSku.setExchangePoint(product.getDefaultSku().getExchangePoint());
+        defaultSku.setId(product.getDefaultSku().getId());
+        defaultSku.setMarketPrice(product.getDefaultSku().getMarketPrice());
+        defaultSku.setPrice(product.getDefaultSku().getPrice());
+        skuVo.setDefaultSku(defaultSku);
+
         if(brand!=null){
             skuVo.setBrandId(brand.getId());
             skuVo.setBrandName(brand.getName());

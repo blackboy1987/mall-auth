@@ -1,5 +1,9 @@
 package com.bootx.mall.entity.vo;
 
+import com.bootx.mall.entity.Product;
+import com.bootx.mall.entity.Store;
+import org.springframework.boot.autoconfigure.session.StoreType;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -16,13 +20,15 @@ public class SkuVo implements Serializable {
 
     private String sn;
 
-    private Long productId;
+    private Long id;
 
     private String name;
 
     private BigDecimal price;
 
-    private String img;
+    private String thumbnail;
+
+    private String path;
 
     private Long sales;
 
@@ -44,7 +50,16 @@ public class SkuVo implements Serializable {
 
     private String storeName;
 
+    private StoreVo store;
+
+    private Product.Type type;
+
+    private String caption;
+
+
     private Set<Attr> attrs = new HashSet<>();
+
+    private DefaultSkuVo defaultSku;
 
     public String getSn() {
         return sn;
@@ -54,12 +69,12 @@ public class SkuVo implements Serializable {
         this.sn = sn;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getId() {
+        return id;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -78,12 +93,28 @@ public class SkuVo implements Serializable {
         this.price = price;
     }
 
-    public String getImg() {
-        return img;
+    public String getThumbnail() {
+        return thumbnail;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public StoreVo getStore() {
+        return store;
+    }
+
+    public void setStore(StoreVo store) {
+        this.store = store;
     }
 
     public Long getSales() {
@@ -173,4 +204,30 @@ public class SkuVo implements Serializable {
     public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
+
+    public Product.Type getType() {
+        return type;
+    }
+
+    public void setType(Product.Type type) {
+        this.type = type;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    public DefaultSkuVo getDefaultSku() {
+        return defaultSku;
+    }
+
+    public void setDefaultSku(DefaultSkuVo defaultSkuVo) {
+        this.defaultSku = defaultSkuVo;
+    }
+
+
 }
