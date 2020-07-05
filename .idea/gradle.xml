@@ -11,6 +11,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/mall-auth" />
             <option value="$PROJECT_DIR$/mall-cart" />
             <option value="$PROJECT_DIR$/mall-cms" />
             <option value="$PROJECT_DIR$/mall-common" />

@@ -1,5 +1,6 @@
 rootProject.name = 'bootx-mall'
 
+include 'mall-auth'
 include 'mall-cart'
 include 'mall-common'
 include 'mall-cms'
